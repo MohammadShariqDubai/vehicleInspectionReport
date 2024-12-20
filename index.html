@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Inspection Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .form-container {
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .form-container h2 {
+            text-align: center;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .form-group textarea {
+            resize: vertical;
+        }
+        .form-group button {
+            width: 100%;
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .form-group button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <img src="data:image/png;base64,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Yw6E4s1+r1in+xWJNXPnqnM9QoTYmLBBiR5PJnTzJ3fruekvue87Nu+qq/r8Re0bt3NUWLxosSPvN998o5133ln9+vVT+/bt1yAeWvvmm292ZIacO+64o9PwNWlPtPvYsWMdubfddlsdcMABLi0mPhoeS+HVV1/Vxx9/rK5duzqBMGDAACcAADMCrKOPJKYZcduaT16m+HdDFCsMavI1kYxkKd76DMU2N2tAawqOECE2RmwwolPM2Pnjdf4Hw1SeKFePFr/TjbtdpjaNWquoqEgvvfSSI90ee+yhffbZR40bN16DIORHi99zzz3q0qWL87c7derktPasWbN0+eWXO9+7JuDjQ3jKQUAEzXUCevj+7777rvP1O3To4AQE91+xYoUTJDvssINycrJUPvNCZSy6o04dnYg0MhP+dkVbnRRoR0j4EBsnNthKEBbEfDj3E5WWl2mLvPYavvvlRvJWGj9+vO699161adNG119/vQ499FA1adJkDZKjve+//36X7qSTTnKm/AknnKBevXqpuLi4KhBXG3JycpwAwS9fvHixIzxk/v777zV69Gi99tprmjp1qiuPYF7fvn21YMECJ0gI9i1dutTuk1CkxaFKxlqlSq0Z0WSRIj9cpkTBh3YvQnUbzDAKEWKDY4No9LgVsaKsUI0zs/XVku/UMreZMosz9P7o951fjMaEdIWFhU7z4oOvWrWqaorsmWeecUQ799xztWTJEmdyY8KjbY866iiXH989CMiPeU5ZBQUFzmdfuHChZs6c6bQ3VgABvM0228y5Cfvvv7+zEPDxETLPPfecXn/9dQ0ZMsTVCbJjCeTn5ym+dKQiM05SNFHT9NtqlOf3Vua2b1tP5q4hvEKE2Jiw/kS33F+vmqNLPntKx3fcU4ds3ktLFi1xhMNkJyAGmTGlITfke//99x2R0cKQA6JCZL5DuuXLl7toOucw8SFhq1ZralnKQnigof18O353nz59HLFbtmzpBAX1mDJlijPXN998cx122GEu7RFHHKETTzzRCQW0fo8ePdS7d2/12K6HlV6hktlXKGfh36yDKipvuAbMe4/mKdFoJ6n9XxRr3N/qjnG0wQykECE2KNaL6GRN2HHVpKf1zJzxOqfTAJ3eeX8b7qs1G2YymvyVV17RZ5995siHAICITKHtt99+zh/HfIewkJ4DsmOCY14TSUfTu/tZuvz8fJeHQB4uAcKActHukBUBgsBAwGA1oL2//PJLd+7qq6/Wd999p4suukiXXHKJnnjiCe2+++6O7HvvvbcTErm5OUqUL1Jy2rGKrnzTtQPjnHbFWTDTeH8lW5+iaNO9TCYkFZ/6vqL5rRTtsKP1aBiDD7HxYb2JvqB0pQaOulFbmD/+cO/T1TSr0RpEh7BPPfWUI+/EiROdZoaomNrMn6NdIRy+eW2mb7CawXSc/8c//uFIjP/fsWPHNa4jPP72t785s/68885zpvzjjz+uDz74wEX00einnHKKbrzxRl188cVumo/8+N2JVaMV+e4IReLLlIwY+Zv0V7zN+crI7+U24VTMHqeKUXcpNn2ckpttp4yTn1GU3XW1tCNEiIZAzDTc1anvaw2o9/iM0RqzdKpu2+4obdW4jRvkfpijZZnPhmxoZzQvvjVk/MMf/qALL7zQaWGqgHmONsYCqA6u3NQRBH/vtNNOLm+zZiypXX2dez3//PPOdD/55JPdfDt48cUXnbZnMQ0CAJOfxTvEE7ASKpfaWtlZ7ZWsWKR4Zjup4x2KtbvAcm+ixJTXFX/Z6vzubcpa9gMLZhUtWqx4620UsyO9jiFCNDTWy6lcUV6kN+Z/oX5temiHTbZ2A9wPcfznyZMnuwg7kXcCbmh1tCrz55jckBtt/sgjjziNyhTcehgYVUCwfPvtt05zEyO46qqr3By7q58d1Im6QGwITkQe4uMO8FkJ0mYq2v4mxTr900yfzqr46HEl7uqnzOfOU/assYpGfFrryHiZkh/cp6RZOCFCbGxYL6J/s3KO5pUu17Fb7KkMKB7gKGTbaqutXGQbDfrXv/5VRx99dNWUF9FvBAHEZhHLqaee6siOhl9XUBYEHjVqlAv6/f73v9dZZ53lAnsepMEnZ8qNOMFee+3lLAwi7iypTdfGkWim4jPHK/HAYcp49UplLf8efyd1NYiIMuZNVnz2hA0irEKE2JBYZ6IThBuz+Fv1bNJBOzTbovIkXLfz+Mu5ubn66quvnP+M/80adIjFvDXz2fjukBINSoANQmLqo4nXlSjkw+dnHp45dQj+I+La3927d3d1wcpgaS1z78QNED4IKOrjQU2izUwALJleA8FXIxYvV/zjJ6wezPuHZA+x8WCdffQyG8x3f/umDmvfS12btodBzmyHwGhtzPKzzz7bke/vf/+706BE2Vm9RiAOP5h5bUxnCI/ZzDJWHzlPJ2h9QB4/ZQdZqQfCg3l5ziF8APdmbh4hxGo5LAyukZZ6UwYCCB+fGYLZC1eoybyxyijijbS1gDoXLJa6HqRoHjvc1r4NIUL8FFjnqHtRRYlun/KyTuy8n9rkVJrGEAt/nJ1jRLUPPvhgDR061BGe3WVMkREcw0SGiKxOQ/szpw2x8KlZBnvnnXfWutw1CKoPISmbNfRMx3lLgSAblgSkhrz462yBRZiQB1JDena7kY7dcpynHAJ4EJ9Ywi677Kxmk/+pzHdurZO6FVafxMCrlbnHKZY2nFcPsXFgnYlONlazvf3O2xr5v5Fuhxi+LtNXEIyg26OPPuqIzwIZtCrpibxDwrffflv9+/d3wTjAOdI+8MAD7oCY1QHTGiuA8r744gs3P46LwH1Z9IKvTWwAM5xIP9NnzJtjaWCuY6azeIaAHMLECwnSsGWWOXvMeTa+UGbMhAFmeAVz5Y8NVcwtd60dZVvupswT/2MKPiR6iI0D60R0NOY///lPPfnkk45cLCPFLEcbo8UhIyvUAHvJ0ZysZcdsx19nOow5a6a80LBMi0EsSHnLLbc4k9oTneqhgadNm+byY2qzOQafmmWtCAs2pEBcSAthKZNpM4RHz549XcQ9OPWGNcHKPHa0sc0V85wyDjroIDePTn3TXYf4ygWK37GnskrZt147yjJylHHFFEVSb6wNEaKhsVZEh8Djxo1zW01Z0srGE0hIcA3C80YYyIeJjNaEhJjnaFzMdZaj3nHHHU6z/uUvf3HmMcRmtxra9euvv9Zdd93ltqmymg4TGmJjGXBvNO2+++6rwYMHu/lu/GqEDloY8pMfAYNWZ/msX0uPACAugCDBkmAmgHOk+9Of/uTKpT2krQnJimKV3nOoshd8Yb0WUzKaoSTCIJaphLkuyax8JbKM2DlNlGzSXpkHD1PMvocIsTGgXkQnCdFsTGrM5jPPPNNpWOanMXcfeughF9BCI0JoiM3ebzQ2204xySEw5aDZMd8pA+175ZVXumWnaHBMcYgPgcmD1sWHxi1gao4yyYtGxtxm/hsTnuAdFgX+NHm5D4IBTU1dEExYFvjcbJMlJkAcgVV6tZE7CH54ouz9BxRZNlOxZu2UbN5RatTCjqaVgbeoWSAZmfbJG3TMZOcnoazsdMsgRIiGQL2IzsaR22+/3a0sw/9l/vuGG25wGpqNIWwvvfbaa3XZZZc5zQipIBRTZsyPQ3ICXewoQ6Pzppjhw4e7OWwIC8nR1Mx/o62pEiY3O9cOPPBAtxkFcxo/GwGAQCAP8+GY5Xz3kXZMdu5P0I+19Wh70hAUxD2gLDT92hKw8tVT5p/77iorV7ywSIlly5VcskzJ+fNUMW+uNG+xymaYMNiph5qee44iJqhChGho1El0TGP2kUMYNCpmNCYyxBs4cKDuvvtu5/9ed911bsELGhjfFy17yCGH6M9//rObRmNTC2Z/586d3Yo0iM41BAHEoxoIE/xwLAFMcPxwyMvcO9qbyD3anzXqLMLhzTGUzY40NDfLbbk3kXeEEm+bYf07MQEEzfpoVzqp0ARR+VPPmlZfofjcOUquMpKvKlYGPyJXzK/OmDAwTR61vqnYtbdaPPmoKfj6zR6ECPFTok6io7kJsmGyQ0Ii0WhbVrOxXh1TmUUumMfDhg1zZMKMh2iQFR8bkr/wwgtu+g1TGcHAyjUWtTCthclPlBzfHvObMtDeTNFxkAdfGiEB/v3vf+uCCy5w5v9HH32kt956y/nc3JMYAZbArrvuWvWWmfUhuAedtOrm4UrccT8T8ZUna0Fi605q+uJziuabgAlDciEaGFVE5wPtiUYOEgOiMU2FdoXk+LWQkvlviMtCF8xpyIzPTl6sALQowTm2iBKwo1x85jffrNz2icbHlOae3JvgGn41gT3KYvEMgTysAu9LUzbpsRxIM3LkSKfpL730UhfAg+RM7WFtbGg4ol97nRL3PVwvole0bqkmr7ygrE1b218h0UM0LKpGLKR9+eWXHTHxbyEapjakQesCzOP77rvPBcfweSGyB1FtDzQp/jMvh6BM/G8i3kTXsQaYwmKZKr4+goIAHkE9tDTvhsOPxiVg+yjXgtNdfOIyEKhjLTvBPPx4Amy4BD8FySuRVHJxHSvjAohaf0ZMwIUIsTFgDdMdjcscNFNQBMnQsFxGg6OVmY4isAZBCcBBeDQt0XM2rbCyjbTkYX4aIkI+zHq0PKTlE9LjOzMlhn/OvDlEZ7rumGOOccE6T+zqQPlMzVFPBAUvr8Ad+CmRTMS1+LAhypw4MXWmdiSa5Cv/xZHK2qqj/RVq9BANi2p9dB+9RmPjm+NPexOcyDhLVJnugqQAf5oIOi+YYAoLjQzBjz/+eHcOf5mpOabomEOH7PjUROohO+9tx99mPrs2gjckKlau0tI991HW0rrfIwcSzZuosRE9Y/MOG22bQvx28CONDgnZ9YVP7d8Cw9y3nwYjMg5x0wfvFVdc4cgLuQmacR3f/rjjjnPanZc88KomTHe0MXvPWUVHtB7BsLGToeyrr7Vi/4HKjNZz3r1lM+W//LyyzOIIEaKhsUYwjgAbr3timooFMcx7e5ObZa74wumvagbkRVtzkIcAGf440XQsAqbk2MHGvDsChPXmROgJxmHq/xJQYUKr5JnnVPHRGMXnzFdkyTJFiguM0RFFMmOKZOeYY27fTRiCePvN1PjB+xRr0jiMuodocPzIdMdsZ4EMZOY7PjgBrmCQC81NGoJtaG18dLahfvrpp47MCAO0NVqeNCySwXSnLF7pfM455zg//BcJZgnKy5U0oRaxfqDznODzkfiqTyN/TjYXK/8OEaIBUS3RWVHm56+BD8ahnSEyEW+0Pxoc0rOunK2gTJnxUge/ko2dZWhzfH2CZayUY9qNIN+6mOp+BVyIECHWDtUG4wDTbWhrFrF4390nZfqMlWaQlwPt7JeVQnyi6sx1M13GXu8gWFxzz1lnq81aToOVGslPvuvvLsoeIkSItUONRF8XoOWZZ2cKjnXvrIMPgluxuGbs4CHau/Ha7eyalhFT96efcr5/iBAh1g51L/GqByAwfjqmOQteWKueTnJAOsz9dYKJI6yMDSiXQoT4zWC9iY5Pz+YSourMtzOdxmaVmoB/Xmh5lscrajxW2MHvuQXBb6+TN8RPB2Iv/mA6NcSvB+tluhN5Z0MJgTpWxQE2nKT/IKIHQgHN/+RDDyvhNDv0tUq4q5VA43/9yqu6Ir+JslKBN97D9mzL5jrjicfdCy02xoAc3ci6AwKWtJM6EstgjwAH04obM6j/CZ22Vu+8fNffK/rvrytuuy11tW6Qn5iOBzGbn3q14oYAC7xqsjJ5Zjw7vzlqYwD97OtLH9d3XK0z0SE302nsXhsxYoTbusoiGHaf1QRuRceyjZQAH3970vpqjHr5FXX815PqlLl6fn1MRblaDbtK+/XvX/UKZ6btvpw4UZPHT9CSRQu1fMlSxazhrdtsqq477KBuO+6o1m3bVs0ceHD/bydN0hcfj9ei+fO1Yvky9164Npttpk7bbKPtevdWm3bBH3KoG6uM3Pddf73KRo1Wh4q4GBY8imIrY0lmhpZmZym7a1ddNnx4jUKwIUHfM3iu3LKThrbcRGX296u799EV995T74HELkJWS3oQS2E1JURZHzDOiP0AZnIIAm8oEDg+7bTT3FLq6kDbWcmJK3rssce6sd6Q4Dn93//9X1V9CXQ/8cQT9drfsV5Ex7xjGysdwDp19qvXBm6Fn81rooJmOOch74zp0/XW8SfqwIzMKi2/3B7Gy31667TLLnW755himzB+vEZddrk2nTlLHUwg5MaiyolEnSYqSSa0yO6x0NLln36ajjrj9CphMjGVbxPLt5ndI9/yZVu+cvKl3In5SO+TTtCJ55xTr0FO3S8aPFgDv/xaLWsRDm+uWK5D33pjowwm0gYE5/Xbdq0i+ou9d3ZEr8+CJvJDGPYseEBI3g1Q15ioC6ycxEoErKzERayv8KkLCLfDDz/c7YSsDQh93mTMqlA/lhoCWNC8so3FbIC3LTF1XR/lsc49BmHZ2OJ/DaU+D5ROwtxAKyMp/cHyWCo78oYb1T/mfvOlCq81ytGRp53qtp8y6JYtXarXzzxL/RYs0na5jdTcpBkkBxlWfn40pi2zc9Qb8fX3u/Tuq6+6a7y84oWTT9He8xeoR06uWlo+SA4yLV9je5gdsrK1s+XLuOsejf3gA3etLrBWYPOJn69B8lWJeNXh3xmbGY044QgpNjZQp/T4Bz8yWd+68kIQlkoHgTBnF+T6tBcXiPUc9DEHazjQwhsKtJl71AXuyc+GsfGqIYFgCtaXvsXaqU8frxPRKRwpiJRj3TubUeoLyI5ETj+eefBB9f12qiMdoOpvFxWqk2ll9qp7P/fBO+/UXkXFLg1Ai08uLtKHBas0obBApYGO6GJCY/xTT7kHNeqZZ9SvImENriyfYN8kcx/IN9HuUxzI19MEwX/vuLNeg+prG4C7msABK62Muzdvr5cOPlAv2/HigQfowT366IHevfRln8oXYdB3rEnwG3sAQhPJjFtRE3iYbB4iHZ+1PVxIxqYkCIhwqQ4MGN4aROANN2p9wEs8IWE6eEtwsGyI5dvO4X1N4NdqcKC5AN9Zk+FB39FHtC+9/Zynb7Ay60NeQLpgWsYYSosXl/Kz2rzc1GtwYi+8gCV4X54frzCv7tmRzrfH9wHnfD1rCizTRoLavJeBg2fkgYmOVcNeEt6R6Bef0R/+Xh7cBxfZ32etiU5l2ZTCDdmnviF8Tjpw6d33qnXA11hgFVzYd++qn1aikTSoyHzrpkZgj8esBYnLL1WX++/VJiNu1tN5uau1qD2kpZ9PcgNq0muvKTf10Lj+n4yoYlf/VV3uu0f5N1ynJzPXNLs3MZLwcGsDg6TM6uRRbq7AjoccrCFHHaUhQ4dq6DHH6BQzaU81N+CCq692O/quOutsXdi9h87v1l03XHyJHr1lhC7suZMe32sf3d67j26ygQZJPX4wIo4491ydZen/tvMuesLS3bRTL51nZfzjmmuqouM80JdMmF3Sr7+u67mjHtx9T9272+66wvy4yw8+RB+89VbVoP7ant8lBxygx/buq+f7DdD1lv56cz8amSANIp1M1YEy2fSEsEoHQoTYjQfvOEApsHeCg/UWHmxb9ud59Ta7JNkgFSQ658jPxigIgBDDnMaaZCEVrxXjtwX4ZLEWi73WBrigmPJsleZ9C7wPAeXiwWIvyI3pzFuMeCEKq0C5H/fn4BVpjBuErG+Pj1ewndqnh6jEtCiP8YmvzQ5QxgjpMdE5IDUrTrFsEDr0B0KVPSVYqdSJsrgPgWpmwHCj+c77HaknWGui82B5ZZN/GcX6YrF1yOuXXKq+bApJAa38QuM8DTrpJGey8wBoJBKrlfmSHvjV0R17anuTbO1omHVKE2s0vwvnUbJ4sRMQ8ekzFE0RHSsg3/J12357tbOO38YGStFmbd01j8YVcSddawNEiKfIA6Lc1/IglNDeHESeGQA8QFyPlkbIU/Kb6KwmzdR25PPq9OhjOtFciAHW/sMzs7Tru6N117nnOeIQxb/76GPU5+33dFosU4fnNFJ/S3dUo3ydFM1Q538/oxGnne6eycgnn1L5lcP0R3NNhmTn6iCzSgZZ+mNy83XEzNmaduFFmvLZZ65NDww9WoPnLtCBlmYvc1eGWLqj5y/SwECUvG6KV4IBzT4HD/xGrwXx+7lGP3EwoL3m4UBzU3cGe1ArcfCb9v/73/+qrB6Qno59E/z0Ni9EcUrANCefEOG2225zbiXp6gtIDXmxIDnSA8vUlfJ4kxFxA55P8L4IH952xF6OoIWChmZTGK9VQwhwDaLyPgdeZIqFxvsc+KET+ozrPCcOvhPrgLDMajAu/EF/Bq0kyuEFLCw79+WgCEiz1kQnMLGhNqRQ2X9cdbX2Wbi4qiIMsI/MP9zz3HOc9PMmOwOFzsy2ynsQNJr55RQ9bIPiwVtv00O33a6yyZOrCA0yjVzuF2IgYQBTyWfa4B+33qqH7Gg5a3bqSiXMQ3UPti6tlm0Duzj16y1NLGn+w4/qw5NP1egTTtJ7x5+op477k+688kpVWFtphx+41HAnM/nZ2TbP7rHE/Hnu1Nz6t9OnEzVu7Fh9PPp99Vu6XPmWj4DhR2WletmOz8vLqtK2mDTJSfXPTSNsaQLGlWf3eNXSvWbHYnvIMeuPre3+b5op/eyzz2qfohJn7VDm66Uler6sRBPiZuKlNdUTtjbwohJMUQ82MxF3AfTd008/7QYa39PdCH+ecUBfe9BHnMdaDNaBsUeQD8HPfR9//PGqfMR+uBacCuMNSf/9739Tf9UN6kesgd2XvPufvgrWC2HN+xW8m0LdqCPCjfsD6s2Uc7orQ1upv08HICIbv/hECVAW451NYVixwRkGXmvOj4JSvgffg+4P8G6PB325TkTfkHjzhRfU/t1RLqDmscAe+or991Mv8/3RhsGOocLZgcHYxDpuWEmZThj/qY4bN14nTPhUg5Orf/EMPzy2RUcneRsH9pEzP3++DfYTJkzUn8ZN0AmffKahpiGDmJHSyHWhq5nGo1IDGEL1sPrtWlik3gWF6mOfBy5boX6j3tdwM6d4KMEHNbqoUO/021ffnHKinu+9s/n4lUKgu2nZ8e+8o9mfTVTj1ED/wMhdcfaZ6n7LcM0c0K8qptDNrAAGdML8ZFIW2IN9Zdsu2nb4jdraXJKR7u20Up61f9qkyfrKNEjHVLu+sfs1P/887XjrCOVcerFGLl/9qqy6KV6p4Rj4ENWDrcyYqB5seyaQRrvTBaf/O/0834ni+1eDe2DSE9nntwLYeBW0uPCpH3zwQWc6QxJAOQQEg2StDWhEfkqMaUIO7u/rxVjgFWjBoCPan1eeYXbzolQPtCuWThDUna3ZzFIFY1qY4vjT/J4Bv4+ANqZPETK0MzjrgeUS7CfghWUQbCzDFUK79+rVy7W/wYiOxPvipuHqHiA5JvWrLZrpoOOOXcNkBzSmvg8M0PTPjIAdDhu0VnPiYHxJsbb9w5H1IjouTONjj7Y8JWu4DEE0MZLt9t00jTTtEnwoC+z73uYTEofY0wgyPXWNFicWLNTSadPla77AhMQKfLIxY1Rsvq9/cNyTvmybEmRML/L7cN8Z+aeNH69WqRgKZVbYACwP+P/LG+Wqi7kt+IEMxOBqRL6mD6B0MEAhkgd+IWTA1/RzuwgByFFXWUHwzCmLegUFPRoOvxUfFivGg/O8R5D3HPDmYSxBD4iExlxfQBjuG1wxCMl4QxImN28+9uB8umblNeUIQcx+/3NlACsVBYA/jRWB6Y+Qw8/mdwmDGhuLoy4OIGTZEs5SdA7cCCzJBiE6D/9+k5x9TasGKzDGNEzfCy9wPi3mEBVMRzxFfMDA/NAINtZO+WNMNKK3c7L12KatVH7+uRp4yCHOFCpIaUuAWT7ezNof58vSYy2bq+Scs9TPBg6DrDbzlfoxrz/QfK2m1w3TQ9276pF2bfXoZm3c8VTjPBWkzPpO5ltPH/fxGgOesjEHGdS0eXVYz/rIBkCJEdNjcH5jHfjG29r3xVc0eOp05aT6ZooNBEw+H6BslZGpY7+brv0s3f4vvapDU+dXmaZv3nlrlQe0YGEk6gQV90Y7BfV4Lc2uApZEMNqMecl7BfGdGeyA9qKdvDleH9AvaHKEfbD/0W4EnXAN0L4eKAT6Eb+a68EAMWOtppmHdCDYCZRRVhBEt1kUxpj0rhfAJSSgeKu5fpDdg3SMuSAQRtSPtSDB+BblIRToM7Q5K0fpR470YGJ9+o9nSWzBjyn/VuQGIfqzZqLs8+20qsEK5tsDWTpwgHqYZvFR9nTwoAuyV5sydPmEbttqyxE3Vx1bmWnb8+ab9MfrrtU+qZdGMmiWBTopbl+nde+mLSyty3PrLS7fDsNv0uCbblS/AQNcvqDZVB0YhAwyBt52Vu+TLr5IQ68ZpqOuvUZD7HOHc8/R1FRaECP4lCK+g41h75MxOIOxhQoTTMFAX6ENCNwajvll5Zppg9fEhgoOGOAizZUefqXwW2Qk82nnmiD4xsz+FzdpoX2HDlVWQENm2e0Y3LShOuulNiGHZsH/9YQGDET+DpIBMKtCQKqm8qo7T99Tp+A1BCt15VrQSqMunIdMrh8D44o6cb0+JGE9B1F8dmBCVg8CaIzJoACpCRDr9NNP/5GwQGnwnDmCY5t6YZIHA5oIXVa9Yb2kK7u62oHiIT/3pz20o0GIzpzr1Ntu16ZpRB5XsEqz3nhTIwb/URf33Vfn9THNsGufquNsIy1m0zJ7oB742h2mTtN8M2kJLmVap/AZs8G2Yv58ffHRGL375puV5p9JUt9FLKzJNH914axZLj1/c8RsgK4y03aKaap3LF91FkU66EQGEh0K4ZHWSFQ+82xgWLFViBvJ0x8U9+DAhGsWSBxplKcsK9Onfq2kSJ8fcbimHX+sOxaffYbaXn+tBp92qpPcS1KEW2Ft+O+Wm1elm3nS8UpefqkOMsG3uQmERIDQLUrLVJwya/Erg6iLFwx+v2IN0Ab6wh/pRMTvTG+7/xutG/Tza0LQJ0czehBhRmt7oRBsixvk9XiOgHQ8N1wGfuXHA/OfaUIvfDxQIJjX11xzjTvw6R977DEXTU9XEtTNP+ug+U86gpn0kQfrU5iy5FXm6eXUBfrdC0Lu5fvkx2rzJwQPlsBYU9NIkew11w0Pat6i8kspD/zHD32aDUoqXmC+TOmCRcq27+AQk1UzR9yueTH7284l4glF4hVOCEDeyT13cGZ4e/ORSt55T7k03vINysrWjFtu1VzrEH4fDS0UtYN8rLR763fb6PAjj3T3rA206ZJBg9Q9N0/FGTGVkJ66GBotX6E9eX72J0M6acSNBHy35omkHjXTbxuT3F999JH2TZnO6MNYm02VYwM7PvEze0gR9bH+em7iRLUy8xvgmxOZLy0q1p+vulILUjKiqbWn+Zy5mmZCjAfOfb8xc7B06TJ15scszTQtmfyVs6a2qIjr4fPPR4WoheXpGzA3U+OjRqCBgoRicQk+qAeDGZPWp8H/JA4Q7E98d7QO7ygkYBcEA9QPVg8i7fxcNz/Bxe/peSAkWI+Of8rcfdB/J2ZQnbVSHbgXGhlrjm3WzH1DQMYGQTRiD0Gzm7axpgQzGTC9xq8ZYdVgigdBGwkWYhkEtTcWHdZIEFxn+o3+CQq39cHqXvyZkD4dUF9AKDp9r0GHanTJarKgkTubuUL0uZv5oz1scHfPbaQuObna3MickdKi3fv308SA1kAIdLY03VP5trO0VflsYMQsT7oJWh14qHlz52m/RYt18LwFOnLOPB05e447DlxZoMapgfpJYYG2Mf81+KLIfnn52veFl9Vo2HXay4RQfopdH5mWZXNNaxMAM8orNXV700xnfT9Hg95+1x2/f2eUzpw0Rd3M7AONe+3kFgIR+T8qGdGQDz5y6Q6z47gxH+tPX3+rxLy5bmMQ0X7Q1Op27LyFOvaLL3XQkmVqa32xGjUznefAYg+vkREozFlDBAKLLKaC+MF5aIJWmL7BQY1fS5SbgF66RqdsNGYwQo2SIFDFL/gQ3AqSDlIwF01U3vvkWHK8ShwCB12A2kAeyMciHH4o1ANBxHw2bfOgzvzUGJF3Dkx+LBdclfT2sFiIV5oTzfdr1QERcsz0oFvAppWHH37YWRJB+P5eF/ysRPdkXVfwsHpsv71KhgzWmNISNw9cHfBT55hAmWCEKTUykW/7nj215LBDa81H1H+++bPkq7ABWRfRaQ+DaoGl437BqLUHZX5qgmnWgH5ucFplUlekWZZ3uQmKdkaUZiZsyD3JJPiCAfu7h9+7Tx+N6batZqaEI8KJaTKObPvO5p35dm/q2W3IEDPvi6uWAGOV+LRE4qfatWKrC4udig45WF/bfXxtV1r+0RXlesT6xp+rbVDRZn7k0gOtTMCKYBMRb2IGHEHzl8g32o6Bnm4lQa70zT48M8xu3m0Q9JcByoJ7nm/WCNq3OnAPP71EOWsD0nNPdqz5uhIw4/VoEJ2AY22g74Kxi5qAH00bCAAikNJBzCE4vVhfYVUdNuirpOoCJEcyXm/+TNzMd+sSO6i8fVojqAqN8Z/Afbd/eY3zdZn5LHQOPs3ETz/Ve+w6Yg+0b4GZehWm3bOaN1N7G3CQu7OZbgxAOh7TasrkyXr7pZcVr1rkYcLHSJFolKvMZs3VrkN7dTUpi0BhsNZm9lE3/MNJX0zS6Pfe1cypUyXT7Oy1z7O28qgrzG/vtd++6m2Dg8H54Pn/pwMnT3GkfXLlcunII7RsxgxlmJlfboTfcrc+GmQDFB+U/sKEe8VINfuzzxVBANk9Y9YXMRvgbK3d0wbe70woQL6vzIx88T/PVLbN0pUbgSLWrpbmw3cxU3cv07bNbOCwwurN117TFOaEzWLI32pL9R0wQNNMg3xg5xjcu5o2O8M0EMGddGCuMifszUqCRmhmBqX3zSE2c+gEt9BukAfS8eOc/P4empC4BHENyE+QigUwkBjzmZVtaH/WaxOsIvDHd0BMgvXolIupzgIX0mBK87x4bmhjfnWXtAiDdOECuD/uBduteZZE7Pn9QCwF6sGUGX4y6WgXmh6tjGBirwer2nwf+KAvgo4pNPqNpaseWDg8U7Q5z4rvuBv0HXV2z8T6BROfMYWmZ/ERG2lY/uqeya67OpfIuybcz/8sOXUkDcKVqbl03/5nJzpBHIhKxep7a0iPdPNTJ5TB1AZlQGBfDuk4aDADiw70DwAwFUQ+BmFd+cjDUZs2ID8PmsUR1ImBRxvRsHxSJh1OnSmLcu8640wd8MVkR/SnzZwf8MhDbgBRHwYT7WSgc1AG5ioPl8FBuZQJSEvdIAhlUxfSUY9g27yfC2kok3tBCNLSD6QjDXXjftyH9AglhGr6gCE9+XmGDEhAH5OWuvv60RcMXg5IQzncn7J5DpRBeyANdSMf96buaFOIwHlfVz59u7gf9fP9wzjgHr7N9At56RfSprfBg/uxr4DyKYv74m7QR5RF2QgXtDn1xr+mPP5meo9nTzoOrnPQHsohL2vyPSAkB/fhoL8pjwg59fVjmmfCdcohDWVzH8pmHPG35w715BzPgTrxHCmPg/xB/KxEB3RuOtH49AMkiOB5Ks5A4pOOoGF0AOXwNx0B+KTBngh0licrA4t8DAoGoi/fH+QlbTBfdfUKgnvTJj9IPcl92ZSBdOfg+m0nnVxF9P+Yr3z0i887rUYeTzgGqX9Q1JV2Uj5pAPX07SQ9ByAN7fN969tFHfzA4bvvB1+mv04e7kce6ks9uEcQpKHvGGx8Ug/KZcAF0/p+8fUhHWVyL87TJurh+4d7cm/OQUz/rPk7mB544UmZvn+8kPXt9f3i+7E6+H4gP3l9uV4wULZvJ+VSFn0C0p8J1/2YIx2WRnDrNhYPEXr6D5CGe/m2cw/K5CAN5VAP/0x8Hu5Hf/q/SUde/yyoH+VSZhA/O9EBleW2vjLB78D/7avGd394cM2XA/y1mj49SO/zepCmrnx1wZcbPHy5PAA+eYgjTjxRA7/4spLoxYU6w0x+H7QKpg2Csnx9g+X6dP4zeG8OQHkgmB5wPdgHPp3Pl54+iGD5oKa0Ph2HT8Phn5s/n35v4NMCnzYInwdQXnpbgvlrQ7Bsn766+/Lpy+Tgb9+OYD4OzmOiE/H3wNVgCg5y+jy+nh7BMoPX+LsmkMZfT88XxOre+hlBZZB+fKZ/D/7Np/+eXnn+5hoSjSOY1qevrsGc47rP5/PWla8u+HJ9nby05e9geVZ66lslgnnS03pwjmvBdNXVle/B8jj426cNIlgmhy+rpvRBBNPVltanC9YX+HPBNtdWZvo1jiD427fXtzmYvzYEy+Z7TfdNbwOfwTYErwfL8PDpg3nS0wXLDJbl61DdEbxeXZkeDUL03zLKmjbRO7nZeisnSwvMZ63pwYT4ZQPSEZgjEMw8O/GChkSDmO6/VeDTEUUnAISJRjCG6S6CNyHhfz3g2RKMY7MRQUR8baL/BBjR1g2BkOg/IwiiEHEmSkq3+8iwD6aF+HWAZ0vAmcg8wh3tjlBHoPO9IRAS/WcEXU2k10dN8au8Pxbi1wW0Os+ZT6w173s3FEKihwjxq4f0/wmIIx00fdZ5AAAAAElFTkSuQmCC" alt="Zee Speed Auto Garage Logo">
+        <h1>Zee Speed Auto Garage LLC</h1>
+        <h3>WH-06, Behind Hidayath Group, Dubai Investment Park-2, Dubai
+        </h3>
+        <h3>Contact: +971-563122575 Email: info@zeespeedauto.com</h3>
+        <h2>Car Inspection Form</h2>
+         <form id="inspectionForm">
+                        
+            <div class="form-group">
+                <label for="Make">Make:</label>
+                <input type="text" id="Make" name="Make" required>
+            </div>
+            <div class="form-group">
+                <label for="Model">Model:</label>
+                <input type="text" id="Model" name="Model" required>
+            </div>
+            <div class="form-group">
+                <label for="Variant">Variant:</label>
+                <input type="text" id="Variant" name="Variant" required>
+            </div>
+            <div class="form-group">
+                <label for="Transmission">Transmission:</label>
+                <input type="text" id="Transmission" name="Transmission" required>
+            </div>
+            <div class="form-group">
+                <label for="Year">Year:</label>
+                <input type="text" id="Year" name="Year" required>
+            </div>
+            <div class="form-group">
+                <label for="Specs">Specs:</label>
+                <textarea id="Specs" name="Specs" rows="3"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="Engine Cylinders">Engine Cylinders:</label>
+                <input type="text" id="Engine Cylinders" name="Engine Cylinders" required>
+            </div>
+            <div class="form-group">
+                <label for="body">Body:</label>
+                <input type="text" id="Body" name="Body" required>
+            </div>
+            <div class="form-group">
+                <label for="Drive">Drive:</label>
+                <input type="text" id="Drive" name="Drive" required>
+            </div>
+            <div class="form-group">
+                <label for="Car Color">Car Color:</label>
+                <input type="text" id="Car Color" name="Car Color" required>
+            </div>
+            <div class="form-group">
+                <label for="Fuel Type">Fuel Type:</label>
+                <input type="text" id="Fuel Type" name="Fuel Type" required>
+            </div>
+            <div class="form-group">
+                <label for="Car_Number">Car Number:</label>
+                <input type="text" id="Car_Number" name="Car_Number" required>
+            </div>
+            <div class="form-group">
+                <label for="Odometer Reading">Odometer Reading:</label>
+                <input type="text" id="Odometer Reading" name="Odometer Reading" required>
+            </div>
+            <div class="form-group">
+                <label for="Engine Size">Engine Size:</label>
+                <input type="text" id="Engine Size" name="Engine Size" required>
+            </div>
+            <div class="form-group">
+                <label for="Chassis">Chassis:</label>
+                <input type="text" id="Chasis" name="Chasis" required>
+            </div>
+            <div class="form-group">
+                <label for="Structural Integrity">Structural Integrity:</label>
+                <input type="text" id="Structural Integrity" name="Structural Integrity" required>
+            </div>
+            <div class="form-group">
+                <label for="Navigation System">Navigation System:</label>
+                <input type="text" id="Navigation System" name="Navigation System" required>
+            </div>
+            <div class="form-group">
+                <label for="Number of Keys">Number of Keys:</label>
+                <input type="text" id="Number of Keys" name="Number of Keys" required>
+            </div>
+            <div class="form-group">
+                <label for="Roof">Roof:</label>
+                <input type="text" id="Roof" name="Roof" required>
+            </div>
+            <div class="form-group">
+                <label for="Rim Type">Rim Type:</label>
+                <input type="text" id="Rim Type" name="Rim Type" required>
+            </div>
+            <div class="form-group">
+                <label for="Rim Condition">Rim Condition:</label>
+                <input type="text" id="Rim Condition" name="Rim Condition" required>
+            </div>
+            <div class="form-group">
+                <label for="Seats Color">Seats Color:</label>
+                <input type="text" id="Seats Color" name="Seats Color" required>
+            </div>
+            <div class="form-group">
+                <label for="Number of Seats">Number of Seats:</label>
+                <input type="text" id="Number of Seats" name="Number of Seats" required>
+            </div>
+            <!-- <div class="form-group">
+                <label for="Number of Tires">Number of Tires:</label>
+                <input type="text" id="Number of Tires" name="Number of Tires" required>
+            </div> -->
+            <div class="form-group">
+                <label for="Brakes">Brakes:</label>
+                <input type="text" id="Brakes" name="Brakes" required>
+            </div>
+            <div class="form-group">
+                <label for="Parking Brake">Parking Brakes:</label>
+                <input type="text" id="Parking Brake" name="Parking Brake" required>
+            </div>
+            <div class="form-group">
+                <label for="Engine Condition">Engine Condition:</label>
+                <input type="text" id="Engine Condition" name="Engine Condition" required>
+            </div>
+            <div class="form-group">
+                <label for="Hoses, Wiring and Fittings (Coolant, Fuel, Brake, Steering, Vacuum, AC), Check for Wear">Hoses, Wiring and Fittings (Coolant, Fuel, Brake, Steering, Vacuum, AC), Check for Wear:</label>
+                <input type="text" id="Hoses, Wiring and Fittings (Coolant, Fuel, Brake, Steering, Vacuum, AC), Check for Wear" name="Hoses, Wiring and Fittings (Coolant, Fuel, Brake, Steering, Vacuum, AC), Check for Wear" required>
+            </div>
+            <div class="form-group">
+                <label for="Inspect Supercharger/Turbocharge Air Cooler">Inspect Supercharger/Turbocharge Air Cooler:</label>
+                <input type="text" id="Inspect Supercharger/Turbocharge Air Cooler" name="Inspect Supercharger/Turbocharge Air Cooler" required>
+            </div>
+            <div class="form-group">
+                <label for="Water, Sludge or Engine Coolant In Oil (Check underside of Oil Filler Cap)">Water, Sludge or Engine Coolant In Oil (Check underside of Oil Filler Cap):</label>
+                <input type="text" id="Water, Sludge or Engine Coolant In Oil (Check underside of Oil Filler Cap)" name="Water, Sludge or Engine Coolant In Oil (Check underside of Oil Filler Cap)" required>
+            </div>
+            <div class="form-group">
+                <label for="Transmission, Transaxle, Differential, And Transfer Case">Transmission, Transaxle, Differential, And Transfer Cases:</label>
+                <input type="text" id="Transmission, Transaxle, Differential, And Transfer Case" name="Transmission, Transaxle, Differential, And Transfer Case" required>
+            </div>
+            <div class="form-group">
+                <label for="Automatic Transmission/Transaxle">Automatic Transmission/Transaxle:</label>
+                <input type="text" id="Automatic Transmission/Transaxle" name="Automatic Transmission/Transaxle" required>
+            </div>
+            <div class="form-group">
+                <label for="Transfer Case 4/4">Transfer Case 4/4:</label>
+                <input type="text" id="Transfer Case 4/4" name="Transfer Case 4/4" required>
+            </div>
+            <div class="form-group">
+                <label for="Differential/Drive Axel">Differential/Drive Axel:</label>
+                <input type="text" id="Differential/Drive Axel" name="Differential/Drive Axel" required>
+            </div>
+            <div class="form-group">
+                <label for="Test Drive General">Test Drive General:</label>
+                <input type="text" id="Test Drive General" name="Test Drive General" required>
+            </div>
+            <div class="form-group">
+                <label for="Engine Starts Properly">Engine Starts Properly:</label>
+                <input type="text" id="Engine Starts Properly" name="Engine Starts Properly" required>
+            </div>
+            <div class="form-group">
+                <label for="Engine">Engine:</label>
+                <input type="text" id="Engine" name="Engine" required>
+            </div>
+            <div class="form-group">
+                <label for="Engine Noise">Engine Noise:</label>
+                <input type="text" id="Engine Noise" name="Engine Noise" required>
+            </div>
+            <div class="form-group">
+                <label for="Engine Visual Inspection">Engine Visual Inspection:</label>
+                <input type="text" id="Engine Visual Inspection" name="Engine Visual Inspection" required>
+            </div>
+            <div class="form-group">
+                <label for="Profile System/Memory Seats">Profile System/Memory Seats:</label>
+                <input type="text" id="Profile System/Memory Seats" name="Profile System/Memory Seats" required>
+            </div>
+            <div class="form-group">
+                <label for="Cruise Control">Cruise Control:</label>
+                <input type="text" id="Cruise Control" name="Cruise Control" required>
+            </div>
+            <div class="form-group">
+                <label for="Transmission Condition">Transmission Condition:</label>
+                <input type="text" id="Transmission Condition" name="Transmission Condition" required>
+            </div>
+            <div class="form-group">
+                <label for="Interior Amenities">Interior Amenities:</label>
+                <input type="text" id="Interior Amenities" name="Interior Amenities" required>
+            </div>
+            <div class="form-group">
+                <label for="Waring Signals Active">Waring Signals Active:</label>
+                <input type="text" id="Waring Signals Active" name="Waring Signals Active" required>
+            </div>
+            <div class="form-group">
+                <label for="Horn">Horn:</label>
+                <input type="text" id="Horn" name="Horn" required>
+            </div>
+            <!-- <div class="form-group">
+                <label for="Steering Wheel Controls">Transfer Case 4/4:</label>
+                <input type="text" id="Steering Wheel Controls" name="Steering Wheel Controls" required>
+            </div> -->
+            <div class="form-group">
+                <label for="Heat/AC">Heat/AC:</label>
+                <input type="text" id="Heat/AC" name="Heat/AC" required>
+            </div>
+            <div class="form-group">
+                <label for="Air Conditioning System">Air Conditioning System:</label>
+                <input type="text" id="Air Conditioning System" name="Air Conditioning System" required>
+            </div>
+            <div class="form-group">
+                <label for="Heating System">Heating System:</label>
+                <input type="text" id="Heating System" name="Heating System" required>
+            </div>
+            <div class="form-group">
+                <label for="Glass And Outside Mirrors">Glass And Outside Mirrors:</label>
+                <input type="text" id="Glass And Outside Mirrors" name="Glass And Outside Mirrors" required>
+            </div>
+            <div class="form-group">
+                <label for="Windshield Glass">Windshield Glass:</label>
+                <input type="text" id="Windshield Glass" name="Windshield Glass" required>
+            </div>
+            <div class="form-group">
+                <label for="Sunroof Glass">Sunroof Glass:</label>
+                <input type="text" id="Sunroof Glass" name="Sunroof Glass" required>
+            </div>
+           <div class="form-group">
+                <button type="button" onclick="redirectToAnotherPage()">Submit</button>
+            </div>
+            
+
+        </form>
+    </div>
+     <script>
+        function redirectToAnotherPage() {
+            const form = document.getElementById('inspectionForm');
+            const formData = new FormData(form);
+
+            // Create an object to store the form data
+            const formObject = {};
+            formData.forEach((value, key) => {
+                formObject[key] = value;
+            });
+
+            // Store the form data in localStorage
+            localStorage.setItem('formData', JSON.stringify(formObject));
+
+            // Redirect to the new page
+            window.location.href = 'form-data.html';
+        }
+    </script>
+</body>
+</html>
