@@ -309,7 +309,7 @@
         }
 
         // Generate dynamic file name
-        const fileName = `${formData?.Make || 'Form'}_${formData?.Car_Number || 'Data'}.pdf`;
+        const fileName = `${formData?.Make || 'Form'}_${formData?.carNumber || 'Data'}.pdf`;
         pdf.save(fileName);
 
     } catch (error) {
