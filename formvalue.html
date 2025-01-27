@@ -21,7 +21,17 @@
   width: 100%;
   border: 1px solid #ddd;
 }
-
+.savebutton {
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .savebutton:hover {
+            background-color: #218838;
+        }
 .styled-table thead tr {
   background-color: #009879;
   color: #ffffff;
@@ -100,7 +110,10 @@
                 <tr><td><h4>28</h4></td><Td><H4>Engine Overheating:</H4></Td><Td><H4 id="engineOverheating"></H4></Td></tr>
             </table>
         </div>
-        <button class="save-button" onclick="savePageAsPDF()">Save as PDF</button>
+        <div class="container">
+            <button class="savebutton" onclick="savePageAsPDF()" style="float: right;">Save as PDF</button>
+
+        </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
